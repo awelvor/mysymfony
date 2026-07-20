@@ -19,11 +19,12 @@ jobs:
       # 2. Ensuite on installe PHP
       - uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
         with:
-          php-version: '8.1' # (Vérifiez que votre composer.json accepte bien la version 8.0)
+          php-version: '8.5' # (Vérifiez que votre composer.json accepte bien la version 8.0)
       - run: pwd
       - run: ls
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - run: php -r "if (hash_file('sha384', 'composer-setup.php') === 'c8b085408188070d5f52bcfe4ecfbee5f727afa458b2573b8eaaf77b3419b0bf2768dc67c86944da1544f06fa544fd47') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
       - run: php composer-setup.php
       - run: php -r "unlink('composer-setup.php');"
+      - run: composer -v
      

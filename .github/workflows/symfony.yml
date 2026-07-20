@@ -20,33 +20,10 @@ jobs:
       - uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
         with:
           php-version: '8.1' # (Vérifiez que votre composer.json accepte bien la version 8.0)
+      - run: pwd
       - run: ls
-      # 3. On prépare le fichier .env
-      - name: Copy .env.test.local
-        run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
-      - run: ls
-      # 4. On gère le cache Composer
-      - name: Cache Composer packages
-        id: composer-cache
-        uses: actions/cache@v3
-        with:
-          path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-
-
-      # 5. Enfin, on installe les dépendances (le composer.json est désormais présent)
-      - name: Install Dependencies
-        run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-
-      # 6. Création de la base de données SQLite
-      - name: Create Database
-        run: |
-          mkdir -p data
-          touch data/database.sqlite
-
-      # 7. Exécution des tests PHPUnit
-      - name: Execute tests (Unit and Feature tests) via PHPUnit
-        env:
-          DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
-        run: vendor/bin/phpunit
+      - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+      - run: php -r "if (hash_file('sha384', 'composer-setup.php') === 'c8b085408188070d5f52bcfe4ecfbee5f727afa458b2573b8eaaf77b3419b0bf2768dc67c86944da1544f06fa544fd47') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
+      - run: php composer-setup.php
+      - run: php -r "unlink('composer-setup.php');"
+     

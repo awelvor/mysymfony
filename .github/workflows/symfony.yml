@@ -30,4 +30,5 @@ jobs:
       - run: composer -v
       - run: pwd
       - run: ls
+      - run: php bin/console list
      

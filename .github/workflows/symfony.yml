@@ -28,5 +28,5 @@ jobs:
       - run: php composer-setup.php
       - run: php -r "unlink('composer-setup.php');"
       - run: composer -v
-      - run: sudo apt install symfony-cli
+      - run: symfony check:requirements
      

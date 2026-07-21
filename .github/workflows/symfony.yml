@@ -20,6 +20,8 @@ jobs:
       - uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
         with:
           php-version: '8.5' # (Vérifiez que votre composer.json accepte bien la version 8.0)
+      - run: add-apt-repository ppa:git-core/ppa
+      - run: apt update; apt install git
       - run: sudo apt install git-all
       - run: pwd
       - run: ls

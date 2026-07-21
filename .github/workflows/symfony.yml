@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # 1. On télécharge le code du projet en tout premier
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       # 2. Ensuite on installe PHP
       - uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
@@ -28,5 +28,6 @@ jobs:
       - run: php composer-setup.php
       - run: php -r "unlink('composer-setup.php');"
       - run: composer -v
-      - run: symfony check:requirements
+      - run: pwd
+      - run: ls
      

@@ -1,0 +1,6 @@
+{
+    "name": "mon-vendeur/mon-projet",
+    "description": "Description de mon projet PHP",
+    "type": "project",
+    "require": {}
+}

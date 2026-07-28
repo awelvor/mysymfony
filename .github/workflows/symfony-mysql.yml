@@ -1,5 +1,5 @@
 # GitHub Action for Symfony with MySQL
-name: Testing Symfony with MySQL
+name: Testing Symfony with MySQL - v1
 on: [push, pull_request]
 jobs:
   symfony:

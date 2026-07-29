@@ -1,6 +1,6 @@
 # GitHub Action for Symfony with MySQL
-name: Testing Symfony with MySQL - v1
-on: [push, pull_request]
+name: Testing Symfony with MySQL - v2
+on: [push]
 jobs:
   symfony:
     name: Symfony (PHP ${{ matrix.php-versions }})
